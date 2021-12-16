@@ -12,11 +12,11 @@ COPY requirements.txt homeassistant/
 COPY homeassistant/package_constraints.txt homeassistant/homeassistant/
 RUN \
     pip3 install --no-cache-dir --no-index --only-binary=:all: --find-links "${WHEELS_LINKS}" \
-    -r homeassistant/requirements.txt
+    -i https://pypi.tuna.tsinghua.edu.cn/simple -r homeassistant/requirements.txt
 COPY requirements_all.txt homeassistant/
 RUN \
     pip3 install --no-cache-dir --no-index --only-binary=:all: --find-links "${WHEELS_LINKS}" \
-    -r homeassistant/requirements_all.txt
+    -i https://pypi.tuna.tsinghua.edu.cn/simple -r homeassistant/requirements_all.txt
 
 ## Setup Home Assistant Core
 COPY . homeassistant/
